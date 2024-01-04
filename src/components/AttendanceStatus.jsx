@@ -17,6 +17,7 @@ import {
   ListItemText,
   Stack,
   Typography,
+  Container,
 } from "@mui/material";
 import React, { useState } from "react";
 
@@ -28,7 +29,7 @@ const AttendanceStatus = () => {
 
   return (
     <>
-      <Box>
+      <Container maxWidth={{xs: 'sm', md: 'lg'}}>
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="#mySpace">
             My Space
@@ -36,11 +37,11 @@ const AttendanceStatus = () => {
           <Typography color="text.primary">Attendance</Typography>
         </Breadcrumbs>
 
-        <Card sx={{ minWidth: 275, marginTop: "1rem", marginX: 1 }}>
-          <Stack direction="row" gap={2} p={2}>
+        <Card sx={{ marginTop: "1rem", marginX: 1 }}>
+          <Stack direction={{xs: "column", md: 'row'}} gap={2} p={2}>
             {/* Attendence Status */}
-            <Stack flex={2} gap={1}>
-              <Typography flex={1} component="div" variant="h6" gutterBottom>
+            <Stack flex={{md: '2', xs: '1'}} gap={1}>
+              <Typography flex={1} component="div" variant="h6" sx={{ marginX: {xs: 'auto', md: 0} }} gutterBottom>
                 Attendance Status
               </Typography>
               <Stack flex={1}>
@@ -65,13 +66,10 @@ const AttendanceStatus = () => {
                 </Collapse>
               </Stack>
               <Box flex={1}>
-                <Card
-                  
-                  variant="outlined"
-                >
+                <Card variant="outlined">
                   <CardContent>
                     <Stack
-                      direction="row"
+                      direction={{xs: "column", md: 'row'}}
                       alignItems="center"
                       justifyContent="center"
                       gap={2}
@@ -221,9 +219,7 @@ const AttendanceStatus = () => {
                 </Button>
               </Stack>
               <Box flex={1}>
-                <Card
-                  variant="outlined"
-                >
+                <Card variant="outlined">
                   <CardContent>
                     <Stack direction="column" alignItems="center">
                       <Typography
@@ -245,10 +241,9 @@ const AttendanceStatus = () => {
             </Stack>
             {/* Action */}
             <Stack
-              flex={2}
+              flex={{md: "2", xs: "1"}}
               gap={1}
               justifyContent="space-between"
-              justifyItems="space-between"
             >
               <Typography
                 component="div"
@@ -258,11 +253,9 @@ const AttendanceStatus = () => {
               >
                 Action
               </Typography>
-              <Stack direction="row" gap={2}>
+              <Stack direction={{xs: "column", md: 'row'}} gap={2}>
                 <Box flex={2}>
-                  <Card
-                    variant="outlined"
-                  >
+                  <Card variant="outlined">
                     <CardContent>
                       <Stack
                         direction="column"
@@ -301,7 +294,7 @@ const AttendanceStatus = () => {
             </Stack>
           </Stack>
         </Card>
-      </Box>
+      </Container>
     </>
   );
 };

@@ -41,12 +41,10 @@ const Navbar = () => {
     },
   }));
   return (
-    <Box sx={{ marginY: 2 }}>
+    <Container maxWidth={{xs: 'sm', md: 'lg'}}>
       <AppBar
         position="relative"
         sx={{
-          width: "65rem",
-          maxWidth: "100%",
           marginX: "auto",
           background: "transparent",
           boxShadow: "none",
@@ -83,7 +81,7 @@ const Navbar = () => {
           </Icons>
         </StyledToolbar>
       </AppBar>
-    </Box>
+    </Container>
   );
 };
 
