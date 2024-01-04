@@ -66,7 +66,7 @@ const AttendanceStatus = () => {
               </Stack>
               <Box flex={1}>
                 <Card
-                  sx={{ height: "8rem", maxHeight: "100%-10" }}
+                  
                   variant="outlined"
                 >
                   <CardContent>
@@ -222,7 +222,6 @@ const AttendanceStatus = () => {
               </Stack>
               <Box flex={1}>
                 <Card
-                  sx={{ height: "8rem", maxHeight: "100%-10" }}
                   variant="outlined"
                 >
                   <CardContent>
@@ -262,7 +261,6 @@ const AttendanceStatus = () => {
               <Stack direction="row" gap={2}>
                 <Box flex={2}>
                   <Card
-                    sx={{ height: "8rem", maxHeight: "100%-10" }}
                     variant="outlined"
                   >
                     <CardContent>
@@ -275,8 +273,7 @@ const AttendanceStatus = () => {
                           variant="h5"
                           component="div"
                           color="text.secondary"
-                          sx={{ fontSize: "2rem", fontWeight: 100 }}
-                          gutterBottom
+                          sx={{ fontSize: "2rem", fontWeight: 100, lineHeight: 1 }}
                         >
                           04:04:39 PM
                         </Typography>
