@@ -54,7 +54,7 @@ const Navbar = () => {
       >
         <StyledToolbar>
           <Search>
-            <InputBase
+            <InputBase sx={{width: "100%"}}
               placeholder="search..."
             />
             <SearchOutlined />

@@ -9,7 +9,7 @@ const Logs = () => {
   };
   return (
     <>
-      <Box>
+      <Box sx={{marginY: 5}}>
         <Typography
           variant="h1"
           component="div"
