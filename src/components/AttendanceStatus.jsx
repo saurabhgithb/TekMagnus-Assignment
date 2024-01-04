@@ -7,17 +7,13 @@ import {
 import {
   Box,
   Button,
-  styled,
   Breadcrumbs,
   Card,
-  CardActions,
   CardContent,
   Collapse,
   Link,
-  List,
   ListItem,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   Stack,
   Typography,
@@ -40,11 +36,11 @@ const AttendanceStatus = () => {
           <Typography color="text.primary">Attendance</Typography>
         </Breadcrumbs>
 
-        <Card sx={{ minWidth: 275, marginTop: "1rem", marginX: 1}}>
+        <Card sx={{ minWidth: 275, marginTop: "1rem", marginX: 1 }}>
           <Stack direction="row" gap={2} p={2}>
             {/* Attendence Status */}
-            <Stack flex={1} gap={1}>
-              <Typography component="div" variant="h6" gutterBottom flex={1}>
+            <Stack flex={2} gap={1}>
+              <Typography flex={1} component="div" variant="h6" gutterBottom>
                 Attendance Status
               </Typography>
               <Stack flex={1}>
@@ -68,38 +64,58 @@ const AttendanceStatus = () => {
                   </ListItem>
                 </Collapse>
               </Stack>
-              <Card variant="outlined">
-                <CardContent>
-                  <Stack direction="row" alignItems="center" gap={2}>
-                    <AccessTime />
-                    <Stack direction="column" alignItems="center">
-                      <Typography
-                        variant="h5"
-                        component="div"
-                        sx={{ fontSize: "1.5rem" }}
-                        color="text.primary"
-                        gutterBottom
-                      >
-                        Avg hrs/Days
-                      </Typography>
-                      <Typography variant="body2">(6hrs 48min)</Typography>
+              <Box flex={1}>
+                <Card
+                  sx={{ height: "8rem", maxHeight: "100%-10" }}
+                  variant="outlined"
+                >
+                  <CardContent>
+                    <Stack
+                      direction="row"
+                      alignItems="center"
+                      justifyContent="center"
+                      gap={2}
+                    >
+                      <Stack direction="row" alignItems="center" gap={2}>
+                        <AccessTime />
+                        <Stack direction="column" alignItems="center">
+                          <Typography
+                            variant="h6"
+                            component="div"
+                            sx={{
+                              fontSize: "1.25rem",
+                              textAlign: "center",
+                              fontWeight: 300,
+                            }}
+                            color="text.primary"
+                          >
+                            Avg hrs/Days
+                          </Typography>
+                          <Typography variant="body2">(6hrs 48min)</Typography>
+                        </Stack>
+                      </Stack>
+                      <Stack direction="row" alignItems="center" gap={2}>
+                        <PieChart />
+                        <Stack direction="column" alignItems="center">
+                          <Typography
+                            variant="h6"
+                            component="div"
+                            sx={{
+                              fontSize: "1.25rem",
+                              textAlign: "center",
+                              fontWeight: 300,
+                            }}
+                            color="text.primary"
+                          >
+                            On Time Arrival
+                          </Typography>
+                          <Typography variant="body2">(6hrs 48min)</Typography>
+                        </Stack>
+                      </Stack>
                     </Stack>
-                    <PieChart />
-                    <Stack direction="column" alignItems="center">
-                      <Typography
-                        variant="h5"
-                        component="div"
-                        sx={{ fontSize: "1.5rem" }}
-                        color="text.primary"
-                        gutterBottom
-                      >
-                        On Time Arrival
-                      </Typography>
-                      <Typography variant="body2">95%</Typography>
-                    </Stack>
-                  </Stack>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </Box>
             </Stack>
             {/* Timings */}
             <Stack flex={1} gap={1}>
@@ -107,12 +123,11 @@ const AttendanceStatus = () => {
                 component="div"
                 variant="h6"
                 gutterBottom
-                flex={1}
                 sx={{ marginX: "auto" }}
               >
                 Timings
               </Typography>
-              <Stack flex={2} direction="row" gap={2}>
+              <Stack flex={1} direction="row" gap={1}>
                 <Button
                   style={{
                     maxWidth: "30px",
@@ -205,58 +220,83 @@ const AttendanceStatus = () => {
                   S
                 </Button>
               </Stack>
-              <Card variant="outlined">
-                <CardContent>
-                  <Stack direction="column" alignItems="center">
-                    <Typography
-                      variant="h5"
-                      component="div"
-                      sx={{ fontSize: "1.5rem" }}
-                      color="text.secondary"
-                      gutterBottom
-                    >
-                      Today (09:30AM - 06:30PM)
-                    </Typography>
-                    <Typography variant="body2">
-                      Duration: 9h 0m Break: 0m
-                    </Typography>
-                  </Stack>
-                </CardContent>
-              </Card>
+              <Box flex={1}>
+                <Card
+                  sx={{ height: "8rem", maxHeight: "100%-10" }}
+                  variant="outlined"
+                >
+                  <CardContent>
+                    <Stack direction="column" alignItems="center">
+                      <Typography
+                        variant="p"
+                        component="div"
+                        sx={{ fontSize: "1rem" }}
+                        color="text.secondary"
+                        gutterBottom
+                      >
+                        Today (09:30AM - 06:30PM)
+                      </Typography>
+                      <Typography variant="body2">
+                        Duration: 9h 0m Break: 0m
+                      </Typography>
+                    </Stack>
+                  </CardContent>
+                </Card>
+              </Box>
             </Stack>
             {/* Action */}
-            <Stack flex={1} gap={1}>
+            <Stack
+              flex={2}
+              gap={1}
+              justifyContent="space-between"
+              justifyItems="space-between"
+            >
               <Typography
                 component="div"
                 variant="h6"
                 gutterBottom
-                flex={1}
                 sx={{ marginX: "auto" }}
               >
                 Action
               </Typography>
               <Stack direction="row" gap={2}>
-                <Card variant="outlined" sx={{ flex: 1 }}>
-                  <CardContent>
-                    <Stack direction="column" alignItems="center">
-                      <Typography
-                        variant="h5"
-                        component="div"
-                        color="text.secondary"
-                        sx={{ fontSize: "1.5rem" }}
-                        gutterBottom
+                <Box flex={2}>
+                  <Card
+                    sx={{ height: "8rem", maxHeight: "100%-10" }}
+                    variant="outlined"
+                  >
+                    <CardContent>
+                      <Stack
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="space-around"
                       >
-                        04:04:39 PM
-                      </Typography>
-                      <Typography variant="body2">Wed 06, Dec 2023</Typography>
-                    </Stack>
-                  </CardContent>
-                </Card>
-                <Stack direction="column" gap={1} justifyContent="space-around">
-                  <Button size="large" variant="contained">
+                        <Typography
+                          variant="h5"
+                          component="div"
+                          color="text.secondary"
+                          sx={{ fontSize: "2rem", fontWeight: 100 }}
+                          gutterBottom
+                        >
+                          04:04:39 PM
+                        </Typography>
+                        <Typography variant="body2">
+                          Wed 06, Dec 2023
+                        </Typography>
+                      </Stack>
+                    </CardContent>
+                  </Card>
+                </Box>
+                <Stack
+                  flex={1}
+                  direction="column"
+                  gap={1}
+                  justifyContent="space-around"
+                >
+                  <Button size="small" variant="contained">
                     Leave Request
                   </Button>
-                  <Button size="large" variant="contained">
+                  <Button size="small" variant="contained">
                     Work From Home
                   </Button>
                 </Stack>
