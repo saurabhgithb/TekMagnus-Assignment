@@ -49,136 +49,124 @@ const AttendanceStatus = () => {
               </Typography>
             </Stack>
           </CardContent>
-          <Stack direction="row" gap={43} alignItems="center">
-            <List>
-              <ListItem
-                disablePadding
-                sx={{ display: "block" }}
-                onClick={handleCollapse}
-              >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                  }}
-                >
-                  <ListItemText
-                    primary="Last Week"
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      justifyContent: "center",
-                    }}
-                  >
-                    {isCollapse ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-                  </ListItemIcon>
-                </ListItemButton>
-              </ListItem>
-              <Collapse in={isCollapse}>
-                <ListItem disablePadding>
-                  <ListItemButton component="a" href="#Leave">
-                    <ListItemText primary="Last Month" />
-                  </ListItemButton>
-                </ListItem>
-              </Collapse>
-            </List>
+          <CardContent>
+            <Stack direction="row" alignItems="center">
+              <Stack flex={1}>
+                  <Typography sx={{display: "flex", alignItems: "center", cursor: "pointer"}} onClick={handleCollapse}>
+                      Last Week
+                        {isCollapse ? (
+                          <KeyboardArrowUp />
+                        ) : (
+                          <KeyboardArrowDown />
+                        )}
+                  </Typography>
 
-            <Stack direction="row" gap={2}>
-              <Button
-                style={{
-                  maxWidth: "30px",
-                  maxHeight: "30px",
-                  minWidth: "30px",
-                  minHeight: "30px",
-                }}
-                variant="outlined"
-                size="small"
-                sx={{ borderRadius: "50%" }}
-              >
-                M
-              </Button>
-              <Button
-                style={{
-                  maxWidth: "30px",
-                  maxHeight: "30px",
-                  minWidth: "30px",
-                  minHeight: "30px",
-                }}
-                variant="outlined"
-                size="small"
-                sx={{ borderRadius: "50%" }}
-              >
-                T
-              </Button>
-              <Button
-                style={{
-                  maxWidth: "30px",
-                  maxHeight: "30px",
-                  minWidth: "30px",
-                  minHeight: "30px",
-                }}
-                variant="outlined"
-                size="small"
-                sx={{ borderRadius: "50%" }}
-              >
-                W
-              </Button>
-              <Button
-                style={{
-                  maxWidth: "30px",
-                  maxHeight: "30px",
-                  minWidth: "30px",
-                  minHeight: "30px",
-                }}
-                variant="outlined"
-                size="small"
-                sx={{ borderRadius: "50%" }}
-              >
-                T
-              </Button>
-              <Button
-                style={{
-                  maxWidth: "30px",
-                  maxHeight: "30px",
-                  minWidth: "30px",
-                  minHeight: "30px",
-                }}
-                variant="outlined"
-                size="small"
-                sx={{ borderRadius: "50%" }}
-              >
-                F
-              </Button>
-              <Button
-                style={{
-                  maxWidth: "30px",
-                  maxHeight: "30px",
-                  minWidth: "30px",
-                  minHeight: "30px",
-                }}
-                variant="outlined"
-                size="small"
-                sx={{ borderRadius: "50%" }}
-              >
-                S
-              </Button>
-              <Button
-                style={{
-                  maxWidth: "30px",
-                  maxHeight: "30px",
-                  minWidth: "30px",
-                  minHeight: "30px",
-                }}
-                variant="outlined"
-                size="small"
-                sx={{ borderRadius: "50%" }}
-              >
-                S
-              </Button>
+                  <Collapse in={isCollapse}>
+                    <ListItem disablePadding>
+                      <ListItemButton component="a" href="#Leave">
+                        <ListItemText primary="Last Month" />
+                      </ListItemButton>
+                    </ListItem>
+                  </Collapse>
+              </Stack>
+              <Stack flex={2} direction="row" gap={2}>
+                <Button
+                  style={{
+                    maxWidth: "30px",
+                    maxHeight: "30px",
+                    minWidth: "30px",
+                    minHeight: "30px",
+                  }}
+                  variant="outlined"
+                  size="small"
+                  sx={{ borderRadius: "50%" }}
+                >
+                  M
+                </Button>
+                <Button
+                  style={{
+                    maxWidth: "30px",
+                    maxHeight: "30px",
+                    minWidth: "30px",
+                    minHeight: "30px",
+                  }}
+                  variant="outlined"
+                  size="small"
+                  sx={{ borderRadius: "50%" }}
+                >
+                  T
+                </Button>
+                <Button
+                  style={{
+                    maxWidth: "30px",
+                    maxHeight: "30px",
+                    minWidth: "30px",
+                    minHeight: "30px",
+                  }}
+                  variant="outlined"
+                  size="small"
+                  sx={{ borderRadius: "50%" }}
+                >
+                  W
+                </Button>
+                <Button
+                  style={{
+                    maxWidth: "30px",
+                    maxHeight: "30px",
+                    minWidth: "30px",
+                    minHeight: "30px",
+                  }}
+                  variant="outlined"
+                  size="small"
+                  sx={{ borderRadius: "50%" }}
+                >
+                  T
+                </Button>
+                <Button
+                  style={{
+                    maxWidth: "30px",
+                    maxHeight: "30px",
+                    minWidth: "30px",
+                    minHeight: "30px",
+                  }}
+                  variant="outlined"
+                  size="small"
+                  sx={{ borderRadius: "50%" }}
+                >
+                  F
+                </Button>
+                <Button
+                  style={{
+                    maxWidth: "30px",
+                    maxHeight: "30px",
+                    minWidth: "30px",
+                    minHeight: "30px",
+                  }}
+                  variant="outlined"
+                  size="small"
+                  sx={{ borderRadius: "50%" }}
+                >
+                  S
+                </Button>
+                <Button
+                  style={{
+                    maxWidth: "30px",
+                    maxHeight: "30px",
+                    minWidth: "30px",
+                    minHeight: "30px",
+                  }}
+                  variant="outlined"
+                  size="small"
+                  sx={{ borderRadius: "50%" }}
+                >
+                  S
+                </Button>
+              </Stack>
             </Stack>
-          </Stack>
-          <AttendenceStatusCards />
+          </CardContent>
+          <CardContent>
+            <AttendenceStatusCards />
+          </CardContent>
         </Card>
       </Box>
     </>

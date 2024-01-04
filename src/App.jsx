@@ -12,6 +12,7 @@ function App() {
       mode: mode,
     },
   });
+  
   return (
     <ThemeProvider theme={darkTheme}>
       <Box>

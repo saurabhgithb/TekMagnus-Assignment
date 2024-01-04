@@ -71,6 +71,7 @@ export default function Sidebar() {
 
   const handleDrawerClose = () => {
     setOpen(!open);
+    setIsCollapse(false);
   };
 
   const handleCollapse = () => {
