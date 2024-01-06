@@ -21,9 +21,16 @@ const StatusCard = () => {
             color: "common.white",
             padding: "1rem 0px",
             borderRadius: "10px",
+            flexDirection: { xs: "column", md: "row" },
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
             <AccessTime sx={{ width: "2rem", height: "2rem" }} />
             <Box sx={{ textAlign: "center" }}>
               <Typography

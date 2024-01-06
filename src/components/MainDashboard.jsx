@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { Container, styled } from "@mui/material";
 import React from "react";
 import MySpace from "./MySpace";
 import Logs from "./Logs";
@@ -20,6 +20,11 @@ const Main = styled("main", {
     }),
     marginLeft: 0,
   }),
+  [theme.breakpoints.down("md")]: {
+    margin: 0,
+    padding: "1rem 0",
+    maxWidth: `calc(100% - 60px)`,
+  },
 }));
 
 const DrawerHeader = styled("div")(({ theme }) => ({

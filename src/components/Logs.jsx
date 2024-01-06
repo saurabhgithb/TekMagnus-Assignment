@@ -83,10 +83,10 @@ const Logs = () => {
           <Typography component="h6" variant="h6" sx={{ fontSize: "1rem" }}>
             December, 2023
           </Typography>
-          <Box sx={{ display: "flex", gap: "1rem" }}>
+          <Box sx={{ gap: "1rem", display: "flex" }}>
             <Box
               sx={{
-                display: "flex",
+                display: { xs: "none", md: "flex" },
                 backgroundColor: theme.palette.primary.main,
                 borderRadius: "10px",
                 outline: "1px solid white",

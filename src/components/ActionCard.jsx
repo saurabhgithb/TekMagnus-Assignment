@@ -21,6 +21,7 @@ const ActionCard = () => {
             flex: 2,
             marginTop: 0,
             width: "100%",
+            flexDirection: { xs: "column", md: "row" },
           }}
         >
           <Paper
@@ -32,7 +33,7 @@ const ActionCard = () => {
               textAlign: "center",
               borderRadius: "10px",
               width: "100%",
-              flex: 2,
+              flex: { xs: 1, md: 2 },
             }}
           >
             <Typography
@@ -57,6 +58,7 @@ const ActionCard = () => {
               gap: "5px",
               color: theme.palette.primary.main,
               flex: 1,
+              width: "100%",
             }}
           >
             <Button
