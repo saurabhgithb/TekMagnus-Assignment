@@ -1,31 +1,12 @@
 import {
-  AccessTime,
-  ExpandLess,
-  ExpandMore,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-  PieChart,
-} from "@mui/icons-material";
-import {
-  Box,
-  Button,
   Breadcrumbs,
-  Card,
-  CardContent,
-  Collapse,
   Link,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Stack,
   Typography,
   Container,
   Paper,
   useTheme,
-  List,
 } from "@mui/material";
 import React, { useState } from "react";
-import StatusCard from "./StatusCard";
 import AttendanceStatus from "./AttendanceStatus";
 import Timings from "./Timings";
 import Action from "./Action";

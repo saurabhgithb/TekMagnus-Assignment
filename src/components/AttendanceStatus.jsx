@@ -1,13 +1,6 @@
 import React from "react";
 import StatusCard from "./StatusCard";
-import {
-  Box,
-  Collapse,
-  List,
-  ListItemButton,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Box, Collapse, List, ListItemButton, Typography } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 const AttendanceStatus = () => {

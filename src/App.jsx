@@ -42,12 +42,7 @@ const App = () => {
           setIsCollapse={setIsCollapse}
           drawerWidth={drawerWidth}
         />
-        <MainDashboard
-          open={open}
-          setOpen={setOpen}
-          isCollapse={isCollapse}
-          setIsCollapse={setIsCollapse}
-        />
+        <MainDashboard open={open} />
       </Box>
     </ThemeProvider>
   );

@@ -1,4 +1,4 @@
-import { Box, Typography, styled } from "@mui/material";
+import { styled } from "@mui/material";
 import React from "react";
 import MySpace from "./MySpace";
 import Logs from "./Logs";
@@ -31,16 +31,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-const MainDashboard = ({
-  open,
-  setOpen,
-  isCollapse,
-  setIsCollapse,
-  drawerWidth,
-}) => {
+const MainDashboard = ({ open }) => {
   return (
     <>
-      <Main drawerWidth={drawerWidth} open={open}>
+      <Main open={open}>
         <DrawerHeader />
         <MySpace />
         <Logs />

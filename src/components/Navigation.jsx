@@ -1,8 +1,6 @@
 import {
   Box,
-  Container,
   Toolbar,
-  Typography,
   styled,
   alpha,
   Slide,
