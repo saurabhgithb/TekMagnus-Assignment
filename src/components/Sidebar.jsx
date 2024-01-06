@@ -2,28 +2,44 @@ import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
+import MuiAppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
+import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import {
+  ArrowBack,
+  ArrowCircleLeft,
+  ArrowCircleRight,
+  ArrowForward,
+  BarChart,
+  ExpandLess,
+  ExpandMore,
+  Home,
+} from "@mui/icons-material";
 import { Collapse } from "@mui/material";
-import { BarChart, Home, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 
-const drawerWidth = 240;
-
-const openedMixin = (theme) => ({
+const openedMixin = (theme, drawerWidth) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.light,
+  overflow: "visible",
 });
 
 const closedMixin = (theme) => ({
@@ -36,27 +52,31 @@ const closedMixin = (theme) => ({
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.light,
+  overflow: "visible",
 });
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "flex-end",
+  justifyContent: "center",
+  overflow: "hidden",
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
 const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
+  shouldForwardProp: (prop) => prop !== "open" && prop !== "drawerWidth",
+})(({ theme, open, drawerWidth }) => ({
   width: drawerWidth,
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
   ...(open && {
-    ...openedMixin(theme),
-    "& .MuiDrawer-paper": openedMixin(theme),
+    ...openedMixin(theme, drawerWidth),
+    "& .MuiDrawer-paper": openedMixin(theme, drawerWidth),
   }),
   ...(!open && {
     ...closedMixin(theme),
@@ -64,59 +84,96 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function Sidebar() {
+const Sidebar = ({ open, setOpen, isCollapse, setIsCollapse, drawerWidth }) => {
+  const theme = useTheme();
 
-  const [open, setOpen] = React.useState(false);
-  const [isCollapse, setIsCollapse] = React.useState(false);
+  const handleCollapse = () => {
+    setIsCollapse(!isCollapse);
+    if (isCollapse === open) {
+      setOpen(true);
+    }
+  };
 
   const handleDrawerClose = () => {
     setOpen(!open);
     setIsCollapse(false);
   };
 
-  const handleCollapse = () => {
-    setIsCollapse(!isCollapse);
-  };
-
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", backgroundColor: theme.palette.primary.main }}>
       <CssBaseline />
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {open ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
+      <Drawer drawerWidth={drawerWidth} variant="permanent" open={open}>
+        <DrawerHeader sx={{ marginTop: "2rem" }}>
+          {open ? (
+            <Typography component="h1" variant="h4" sx={{ fontWeight: "300" }}>
+              KRISP
+            </Typography>
+          ) : (
+            <Typography component="h1" variant="h3" sx={{ fontWeight: "300" }}>
+              K
+            </Typography>
+          )}
         </DrawerHeader>
-        <Divider />
-        <List>
-          <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            position: "relative",
+            marginY: "2rem",
+            right: 0,
+          }}
+        >
+          <Box
+            sx={{
+              flex: 1,
+              height: "2px",
+              width: "100%",
+              backgroundColor: "whitesmoke",
+            }}
+          ></Box>
+          <Box
+            onClick={handleDrawerClose}
+            sx={{
+              position: "absolute",
+              right: "-11px",
+              top: "-11.5px",
+              cursor: "pointer",
+            }}
+          >
+            {open ? (
+              <ArrowBack
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  width: "24px",
+                  height: "24px",
+                  color: "black",
+                  backgroundColor: "whitesmoke",
+                  borderRadius: "50%",
                 }}
-              >
-                <Home />
-              </ListItemIcon>
-              <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
+              />
+            ) : (
+              <ArrowForward
+                sx={{
+                  width: "24px",
+                  height: "24px",
+                  color: "black",
+                  backgroundColor: "whitesmoke",
+                  borderRadius: "50%",
+                }}
+              />
+            )}
+          </Box>
+        </Box>
+
+        <List>
           <ListItem
             disablePadding
-            sx={{ display: "block" }}
-            onClick={handleCollapse}
+            sx={{
+              display: "block",
+              borderRadius: "0 100vw 100vw 0",
+              backgroundColor: theme.palette.primary.main,
+              color: theme.palette.primary.light,
+              my: "10px",
+            }}
           >
             <ListItemButton
               sx={{
@@ -130,50 +187,68 @@ export default function Sidebar() {
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
+                  color: theme.palette.primary.light,
                 }}
               >
-                <BarChart />
+                <Home />
               </ListItemIcon>
-              <ListItemText primary="My Space" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            sx={{
+              display: "block",
+            }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+                borderRadius: "0 100vw 100vw 0",
+                backgroundColor: theme.palette.secondary.main,
+                color: theme.palette.primary.light,
+                "&: hover": {
+                  backgroundColor: theme.palette.secondary.light,
+                },
+              }}
+              onClick={handleCollapse}
+            >
               <ListItemIcon
                 sx={{
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
+                  color: theme.palette.primary.light,
                 }}
-              >{open ? (isCollapse ? <KeyboardArrowUp /> : <KeyboardArrowDown />) : null}
+              >
+                <BarChart />
               </ListItemIcon>
+              <ListItemText primary="My Space" sx={{ opacity: open ? 1 : 0 }} />
+              {open ? isCollapse ? <ExpandLess /> : <ExpandMore /> : null}
             </ListItemButton>
+            {["Leave", "Attendance", "Expense & Travel", "Help Desk"].map(
+              (text, index) => (
+                <Collapse
+                  key={index}
+                  in={isCollapse}
+                  timeout="auto"
+                  unmountOnExit
+                >
+                  <List component="div" disablePadding>
+                    <ListItemButton sx={{ pl: 4 }}>
+                      <ListItemText primary={text} />
+                    </ListItemButton>
+                  </List>
+                </Collapse>
+              )
+            )}
           </ListItem>
-          <Collapse in={isCollapse}>
-            <ListItem disablePadding>
-              <ListItemButton component="a" href="#Leave">
-                <ListItemText primary="Leave" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton component="a" href="#Attendance">
-                <ListItemText primary="Attendance" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton component="a" href="#Performance">
-                <ListItemText primary="Performance" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton component="a" href="#ExpensesnTravel">
-                <ListItemText primary="Expenses & Travel" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton component="a" href="#help">
-                <ListItemText primary="Help Desk" />
-              </ListItemButton>
-            </ListItem>
-          </Collapse>
         </List>
       </Drawer>
     </Box>
   );
-}
+};
+
+export default Sidebar;

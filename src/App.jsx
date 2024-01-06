@@ -1,31 +1,56 @@
+import React from "react";
 import Sidebar from "./components/Sidebar";
-import Dashboard from "./components/Dashboard";
-import Navbar from "./components/Navbar";
-import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
-import { useState } from "react";
+import { Box, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import MainDashboard from "./components/MainDashboard";
+import Navigation from "./components/Navigation";
 
-function App() {
-  const [mode, setMode] = useState("dark");
+const drawerWidth = 240;
 
-  const darkTheme = createTheme({
-    palette: {
-      mode: mode,
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#202026",
+      light: "#F3F3F3",
     },
-  });
-  
+    secondary: {
+      main: "#F29C50",
+    },
+    common: {
+      text: "#FFF",
+    },
+  },
+});
+
+const App = () => {
+  const [open, setOpen] = React.useState(false);
+  const [isCollapse, setIsCollapse] = React.useState(false);
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Box>
-        <Stack direction="row" spacing={2} justifyContent="space-between">
-          <Sidebar setMode={setMode} mode={mode} />
-          <Box flex={6}>
-            <Navbar />
-            <Dashboard />
-          </Box>
-        </Stack>
+    <ThemeProvider theme={theme}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <Sidebar
+          open={open}
+          setOpen={setOpen}
+          isCollapse={isCollapse}
+          setIsCollapse={setIsCollapse}
+          drawerWidth={drawerWidth}
+        />
+        <Navigation
+          open={open}
+          setOpen={setOpen}
+          isCollapse={isCollapse}
+          setIsCollapse={setIsCollapse}
+          drawerWidth={drawerWidth}
+        />
+        <MainDashboard
+          open={open}
+          setOpen={setOpen}
+          isCollapse={isCollapse}
+          setIsCollapse={setIsCollapse}
+        />
       </Box>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

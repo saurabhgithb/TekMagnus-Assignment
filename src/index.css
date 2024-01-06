@@ -1,0 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: radial-gradient(circle at 50% 50%,hsl(0deg 0% 75.07%) 0%, hsl(0deg 0% 9.45% / 95%) 33%);
+  min-height: 100vh;
+}
